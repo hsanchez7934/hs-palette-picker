@@ -2,10 +2,115 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Palette Picker</title>
   </head>
   <body>
-    <h1>Hello</h1>
+    <header>
+      <h1>Palette Picker</h1>
+    </header>
+    <section id='colors-container'>
+
+      <article class="colors">
+        <div class='colors-top-section'></div>
+        <div class='colors-bottom-section'>
+          <p class='hex-colors' id='color1'></p>
+          <button type="button" class='lock-button'></button>
+        </div>
+      </article>
+      <article class="colors">
+        <div class='colors-top-section'></div>
+        <div class='colors-bottom-section'>
+          <p class='hex-colors' id='color2'></p>
+          <button type="button" class='lock-button'></button>
+        </div>
+      </article>
+      <article class="colors">
+        <div class='colors-top-section'></div>
+        <div class='colors-bottom-section'>
+          <p class='hex-colors' id='color3'></p>
+          <button type="button" class='lock-button'></button>
+        </div>
+      </article>
+      <article class="colors">
+        <div class='colors-top-section'></div>
+        <div class='colors-bottom-section'>
+          <p class='hex-colors' id='color4'></p>
+          <button type="button" class='lock-button'></button>
+        </div>
+      </article>
+      <article class="colors">
+        <div class='colors-top-section'></div>
+        <div class='colors-bottom-section'>
+          <p class='hex-colors' id='color5'></p>
+          <button type="button" class='lock-button'></button>
+        </div>
+      </article>
+
+    </section>
+    <section id='controls'>
+      <section id=controls-top-section>
+        <button type="button" id='generate-palette-button'>New Palette</button>
+      </section>
+      <section id='controls-bottom-section'>
+        <div id='drop-down-menu-container'>
+
+            <p id='projects-menu'>Project Name</p>
+            <img src="./assets/arrow-hover.svg" alt="Dropdown menu icon." id='drop-down-icon'>
+
+          <ul class='hidden-list'>
+            <!-- <li class='projects'>Project 1</li>
+            <li class='projects'>Project 2</li>
+            <li class='projects'>Project 3</li> -->
+          </ul>
+        </div>
+        <input type="text" name="palette-name" id='palette-name' placeholder='Enter palette name...'>
+        <button type="button" id='save-palette-button'>Save Palette</button>
+      </section>
+    </section>
+    <section id='project-folders-container'>
+      <div class="">
+        <h2>My Projects</h2>
+        <h3>Create a new project</h3>
+        <input type="text" name="project-name" placeholder='Enter project name...' id='project-name-input'>
+        <button type="button" name="save-project" id='save-project-button' disabled="true">Save Project</button>
+      </div>
+
+      <div id='projects-container'>
+
+        <!-- <article class="project-cards">
+
+          <div class="project-cards-top-section">
+            <h4>Project Name</h4>
+            <button type="button" name="project-delete-button" class='project-delete-button'></button>
+          </div>
+
+          <div class="project-cards-bottom-section">
+
+            <article class="user-saved-palette">
+              <section class='project-cards-left-section'>
+                <h5>Palette Name</h5>
+              </section>
+              <section class='project-cards-right-section'>
+                <div class="saved-palette-card">
+                  <article class="palette-card-article" id=''><p class='palette-card-hex-text'></p></article>
+                  <article class="palette-card-article" id=''><p class='palette-card-hex-text'></p></article>
+                  <article class="palette-card-article" id=''><p class='palette-card-hex-text'></p></article>
+                  <article class="palette-card-article" id=''><p class='palette-card-hex-text'></p></article>
+                  <article class="palette-card-article" id=''><p class='palette-card-hex-text'></p></article>
+                  <div class="delete-button-div">
+                    <button type="button" name="delete-palette-button" class='delete-palette-button'></button>
+                  </div>
+                </div>
+              </section>
+            </article>
+
+          </div>
+        </article> -->
+
+      </div>
+    </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src='./js/index.js'></script>
   </body>
 </html>
