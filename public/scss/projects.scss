@@ -1,0 +1,198 @@
+#project-folders-container {
+  width: 100%;
+  background-color: $black;
+}
+
+h2 {
+  color: $white;
+  font-weight: lighter;
+  text-align: center;
+  border-bottom: 1px solid $btntxtcolor;
+  width: 40%;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+h3 {
+  color: $white;
+  font-weight: lighter;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+h4 {
+  margin: 0;
+  width: 90%;
+  height: 40px;
+  text-align: left;
+  color: $btntxtcolor;
+  font-size: 25px;
+  font-weight: lighter;
+  display: inline-block;
+}
+
+h5 {
+  margin: 0;
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  color: $btntxtcolor;
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+.project-cards-left-section {
+  float: left;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-cards-right-section {
+  float: right;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+#project-name-input {
+  display: block;
+  margin: 30px auto;
+  width: 250px;
+  height: 30px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+#save-project-button {
+  width: 150px;
+  height: 35px;
+  color: #f2f2f2;
+  font-size: 15px;
+  font-weight: lighter;
+  background-color: #006666;
+  border-width: 0px;
+  border-radius: 0px;
+  display: block;
+  margin: 0 auto;
+}
+
+#save-project-button:hover {
+  cursor: pointer;
+  background-color: $btntxtcolor;
+  color: $btncolor;
+  font-weight: 500;
+  border: 3px solid $btncolor;
+}
+
+#save-project-button:focus {
+  outline: none;
+}
+
+#projects-container {
+  width: 80%;
+  margin: 40px auto 40px auto;
+}
+
+.project-cards {
+  width: 90%;
+  margin: 0px auto 80px auto;
+  border-bottom: 1px solid $btntxtcolor;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.saved-palette-card {
+  display: flex;
+  flex-direction: row;
+
+}
+.palette-card-article {
+  height: 70px;
+  width: 20%;
+  background-color: blue;
+  border: 1px solid $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-palette-button {
+  background-image: url(../assets/trash.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  background-color: inherit;
+  border-width: 0px;
+}
+
+.delete-palette-button:hover {
+  cursor: pointer;
+  background-image: url(../assets/trash-hover.svg);
+}
+
+.delete-palette-button:focus {
+  outline: none;
+}
+
+.delete-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.project-cards-top-section {
+  // height: 20%;
+}
+
+.project-cards-bottom-section {
+  // height: 80%;
+}
+
+.user-saved-palette {
+  height: 100px;
+}
+
+#save-project-button:disabled {
+  background-color: red;
+}
+
+.palette-card-hex-text {
+  color: #595959;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.project-delete-button {
+  background-image: url(../assets/delete.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  background-color: inherit;
+  border-width: 0px;
+  float: right;
+}
+.project-delete-button:hover {
+  background-image: url(../assets/delete-hover.svg);
+  cursor: pointer;
+}
+
+.project-delete-button:focus {
+  outline: none;
+}
+
+.project-cards-bottom-section {
+  padding-top: 50px;
+}
