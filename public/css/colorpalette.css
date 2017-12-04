@@ -1,0 +1,47 @@
+#colors-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row; }
+  #colors-container .colors {
+    height: 100%;
+    width: 20%;
+    border: 1px solid black; }
+    #colors-container .colors .colors-top-section {
+      height: 70%; }
+    #colors-container .colors .colors-bottom-section {
+      height: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; }
+      #colors-container .colors .colors-bottom-section .hex-colors {
+        font-size: 20px;
+        margin: 0px 0px 20px 0px;
+        color: #595959;
+        opacity: 0.9; }
+      #colors-container .colors .colors-bottom-section .lock-button {
+        background-image: url(../assets/padlock.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 40px;
+        width: 40px;
+        background-color: inherit;
+        border-width: 0px; }
+      #colors-container .colors .colors-bottom-section .locked {
+        background-image: url(../assets/padlock-active.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 40px;
+        width: 40px;
+        background-color: inherit;
+        border-width: 0px; }
+      #colors-container .colors .colors-bottom-section .lock-button:hover {
+        background-image: url(../assets/padlock-active.svg);
+        cursor: pointer; }
+      #colors-container .colors .colors-bottom-section .lock-button:focus {
+        outline: inherit; }
+
+/*# sourceMappingURL=colorpalette.css.map */

@@ -1,6 +1,7 @@
 @import './colors.scss';
 @import './controls.scss';
 @import './projects.scss';
+@import './colorpalette.scss';
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800);
 
 * {
@@ -10,7 +11,6 @@
 html {
   width: 100%;
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -19,83 +19,18 @@ body {
   margin: 0;
   padding: 0;
   background-color: $black;
-}
-
-header {
-  width: 100%;
-  height: 60px;
-  background-color: $black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-h1 {
-  color: $white;
-  font-weight: lighter;
-  margin: 0;
-}
-
-#colors-container {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-}
-
-.colors {
-  // background-color: pink;
-  height: 100%;
-  width: 20%;
-  border: 1px solid black;
-}
-
-.colors-top-section {
-  height: 70%;
-}
-
-.colors-bottom-section {
-  height: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.lock-button {
-  background-image: url(../assets/padlock.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 40px;
-  width: 40px;
-  background-color: inherit;
-  border-width: 0px;
-}
-
-.locked {
-  background-image: url(../assets/padlock-active.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 40px;
-  width: 40px;
-  background-color: inherit;
-  border-width: 0px;
-}
-
-.lock-button:hover {
-  background-image: url(../assets/padlock-active.svg);
-  cursor: pointer;
-}
-
-.lock-button:focus {
-  outline: inherit;
-}
-
-.hex-colors {
-  font-size: 20px;
-  margin: 0px 0px 20px 0px;
-  color: #595959;
-  opacity: 0.9;
+  font-family: 'Montserrat', sans-serif;
+  header {
+    width: 100%;
+    height: 60px;
+    background-color: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      color: $white;
+      font-weight: lighter;
+      margin: 0;
+    }
+  }
 }
