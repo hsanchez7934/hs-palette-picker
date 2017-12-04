@@ -1,4 +1,6 @@
 // knex migrate:latest --env test
+// knex seed:run --env test
+
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('palettes').del()
