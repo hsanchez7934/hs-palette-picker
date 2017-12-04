@@ -1,21 +1,21 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+// const path = require('path');
+
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true}));
+app.locals.title = 'Palette Picker';
 
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true}));
-
-app.use(express.static(__dirname + '/public'));
-
-app.set('port', process.env.PORT || 3000);
-app.locals.title = 'Palette Picker';
 
 app.get('/api/v1/projects', (request, response) => {
-  database(`projects`).select()
+  database('projects').select()
   .then(projects => response.status(200).json(projects))
   .catch(error => response.status(500).json({ error }));
 });
