@@ -193,16 +193,22 @@ function onSaveProjectClick() {
 //and removed from page
 function deleteProjectOnClick() {
   const id = $(this).closest('.project-cards').attr('id');
-  deleteProjectFromDB(id);
+  const project = $(this).closest('.project-cards').children('.user-saved-palette');
   const projectTitle = $(this).siblings().text();
   const li = $('.projects');
-  li.each(function(index, element) {
-    let elText = $(element).text();
-    if(projectTitle === elText) {
-      element.remove();
-    }
- })
-  $(this).closest('.project-cards').remove();
+  if(!project.length) {
+    deleteProjectFromDB(id);
+    $(this).closest('.project-cards').remove();
+    $('#projects-menu').text('Project Name');
+    li.each(function(index, element) {
+      let elText = $(element).text();
+      if(projectTitle === elText) {
+        element.remove();
+      }
+    })
+  } else {
+    return alert('Cannot delete a project that has saved palettes, delete all palettes first');
+  }
 }
 
 //on dropdown list click
