@@ -1,14 +1,14 @@
 
-exports.seed = function(knex, Promise) { //begin data seeding for dev environment
-  return knex('palettes').del() // Deletes ALL existing entries in palettes table
-  .then(() => knex('projects').del())  // Deletes ALL existing entries in projects table
+exports.seed = function(knex, Promise) {
+  return knex('palettes').del()
+  .then(() => knex('projects').del())
   .then(() => {
-    return Promise.all([  //return promise
-      knex('projects').insert({  //insert project with name Project 1 and id
+    return Promise.all([
+      knex('projects').insert({
         name: 'Project 1'
       }, 'id')
-      .then( project => {  //return promise
-        return knex('palettes').insert([ //insert palettes Summer and Winter that relate to Project 1
+      .then( project => {
+        return knex('palettes').insert([
           { name: 'Summer',
             project_id: project[0],
             color1: "#F264DE",
@@ -27,8 +27,8 @@ exports.seed = function(knex, Promise) { //begin data seeding for dev environmen
           }
         ])
       })
-      .then(() => console.log('Seeding dev complete!'))  //console log is seeding was successful
-      .catch(error => console.log(`Error seeding data: ${error}`)) // console log if seeding was unsuccessful
+      .then(() => console.log('Seeding dev complete!'))
+      .catch(error => console.log(`Error seeding data: ${error}`))
     ])
   })
   .catch(error => console.log(`Error seeding data: ${error}`));

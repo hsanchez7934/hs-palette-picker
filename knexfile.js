@@ -1,32 +1,32 @@
 module.exports = {
 
-  development: {  //development environment section of knex configuration
+  development: {
     client: 'pg',
-    connection: 'postgres://localhost/palettepicker', //connect to palettepicker database
+    connection: 'postgres://localhost/palettepicker',
     migrations: {
-      directory: './db/migrations' //define migrations folder path
+      directory: './db/migrations'
     },
     seeds: {
-      directory: './db/seeds/dev'  //define seed data folder path
+      directory: './db/seeds/dev'
     },
     useNullAsDefault: true
   },
-    production: { //production environment section of knex configuration
+    production: {
       client: 'pg',
-      connection: process.env.DATABASE_URL + `?ssl=true`, //connect to environment url
+      connection: process.env.DATABASE_URL + `?ssl=true`,
       migrations: {
-        directory: './db/migrations' //define migrations folder path
+        directory: './db/migrations'
     },
     useNullAsDefault: true
   },
-  test: {  //testing environment section of knex configuration
+  test: {
     client: 'pg',
     connection: process.env.DATABASE_URL || 'postgres://localhost/palettepicker_test', //connect to palettepicker_test database
     migrations: {
-      directory: './db/migrations'  //define migrations folder path
+      directory: './db/migrations'
     },
     seeds: {
-      directory: './db/seeds/test'  //define seeds folder path
+      directory: './db/seeds/test'
     },
     useNullAsDefault: true
   }

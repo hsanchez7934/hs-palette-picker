@@ -1,7 +1,3 @@
-/*---------------------------------------
->>>>>>>>  EVENT LISTENERS  <<<<<<<<
-----------------------------------------*/
-
 $(document).ready(function() {
   newPaletteOnClick();
   fetchProjectsFromDB();
@@ -22,19 +18,10 @@ $('#projects-container').on('click', '.delete-palette-button', deletePaletteOnCl
                         .on('click', '.project-delete-button', deleteProjectOnClick)
                         .on('click', '.saved-palette-card', onPaletteCardClick);
 
-/*---------------------------------------
->>>>>>>>  END EVENT LISTENERS  <<<<<<<<
-----------------------------------------*/
-
-/*---------------------------------------
->>>>>>>>  CONSTRUCTOR FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-//constuctor function used to make instances of new projects
 function Project(name) {
   this.name = name;
 }
 
-//constuctor function used to make instances of new palettes
 function Palette(name, array) {
   this.name = name;
   this.color1 = array[0];
@@ -44,17 +31,6 @@ function Palette(name, array) {
   this.color5 = array[4];
 }
 
-/*---------------------------------------
->>>>>>>>  END CONSTRUCTOR FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-
-/*---------------------------------------
->>>>>>>>  FETCH CALL FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-//making a post call and adding a project to the database
-//and prepend to page
 function addProjectToDB(project) {
   fetch('/api/v1/projects', {
     method: 'POST',
@@ -75,8 +51,6 @@ function addProjectToDB(project) {
   .catch(error => alert(error));
 }
 
-//function used to fetch all projects from database
-//and prepend to page
 function fetchProjectsFromDB() {
   return fetch(`/api/v1/projects`)
   .then(response => response.json())
@@ -90,8 +64,6 @@ function fetchProjectsFromDB() {
   .catch(error => alert(error));
 }
 
-//function to delete a project from
-//database based on id
 function deleteProjectFromDB(id) {
   fetch(`/api/v1/projects/${id}`, {
     method: 'DELETE'
@@ -100,7 +72,6 @@ function deleteProjectFromDB(id) {
   .catch(error => console.log(error))
 }
 
-//function to delete palette from database
 function fetchProjectPalettesFromDB(projects) {
   let target;
   projects.forEach( project => {
@@ -119,7 +90,6 @@ function fetchProjectPalettesFromDB(projects) {
   })
 }
 
-//function used to post new palette to project
 function postPaletteToProject(id, palette, target) {
   fetch(`/api/v1/projects/${id}/palettes`, {
     method: 'POST',
@@ -133,7 +103,6 @@ function postPaletteToProject(id, palette, target) {
   .catch(error => console.log(error));
 }
 
-//function used to delete palette from database
 function deletePaletteFromDB(id, target) {
   fetch(`/api/v1/palettes/${id}`, {
     method: 'DELETE'
@@ -142,18 +111,6 @@ function deletePaletteFromDB(id, target) {
   .catch(error => console.log(error))
 }
 
-/*---------------------------------------
->>>>>>>>  END FETCH CALL FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-
-/*---------------------------------------
->>>>>>>>  ON BUTTON CLICK FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-//on click of new palette button,
-//new color palette will be generated
-//and updated on page for user to see
 function newPaletteOnClick() {
   let color;
   let button;
@@ -167,9 +124,6 @@ function newPaletteOnClick() {
   }
 }
 
-//on save project button click
-//project will save to database
-//and prepend to page
 function onSaveProjectClick() {
   const userInput = $('#project-name-input').val();
   const newProject = new Project(userInput);
@@ -178,9 +132,6 @@ function onSaveProjectClick() {
   enableProjectSaveButton();
 }
 
-//on click of delete project button
-//project will be deleted form database
-//and removed from page
 function deleteProjectOnClick() {
   const id = $(this).closest('.project-cards').attr('id');
   deleteProjectFromDB(id);
@@ -195,20 +146,12 @@ function deleteProjectOnClick() {
   $(this).closest('.project-cards').remove();
 }
 
-//on dropdown list click
-//dropdown menu placeholder text will
-//reflect the text of list item that has been clicked
-//Also toggles the dropdown list from visible to hidden and back
 function liOnClick() {
  let text = $(this).text();
  $('#projects-menu').text(text);
  $('.hidden-list').toggleClass('visible-list')
 }
 
-//on save palette button click
-//palette will save to database
-//and prepend to project that
-//it was saved to
 function onSavePaletteClick() {
   const userInput = $('#palette-name').val();
   const newPalette = new Palette(userInput, colorsArray());
@@ -234,18 +177,12 @@ function onSavePaletteClick() {
   }
 }
 
-//On delete palette button click
-//palette will be removed from database
-//and removed from page
 function deletePaletteOnClick() {
   const id = $(this).closest('.user-saved-palette').attr('id');
   const palette = $(this).closest('.user-saved-palette');
   deletePaletteFromDB(id, palette);
 }
 
-//On palette card click
-//color palette will show
-//on large random generated color palette area
 function onPaletteCardClick() {
   let hexCode;
   const text = $(this).find('.palette-card-hex-text');
@@ -256,22 +193,10 @@ function onPaletteCardClick() {
   })
 }
 
-//toggles dropdown list
-//from visible to hidden and back
 function projectListOnClick() {
   $('.hidden-list').toggleClass('visible-list')
 }
 
-/*---------------------------------------
->>>>>>>>  END OF ON BUTTON CLICK FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-
-/*---------------------------------------
->>>>>>>>  BEGIN APPEND/PREPEND FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-//prepend project to page
 function prependProject(project) {
   $('#projects-container').prepend(
     `<article class="project-cards" id=${project.id}>
@@ -285,16 +210,12 @@ function prependProject(project) {
   )
 }
 
-//prepend list item to dropdown list
-//to show user the name of saved projects
-//to choose from
 function prependProjectLi(name) {
   $('.hidden-list, .visible-list').prepend(`
     <li class='projects'>${name}</li>
   `)
 }
 
-//append color palette card to page
 function appendProjectCard(target, palette) {
   const { name, color1, color2, color3, color4, color5, id} = palette;
   target.append(`
@@ -328,27 +249,18 @@ function appendProjectCard(target, palette) {
   )
 }
 
-/*---------------------------------------
->>>>>>>>  END PREPEND/APPEND FUNCTIONS  <<<<<<<<
-----------------------------------------*/
-
-//toggle class to show user
-//that a color has been locked
 function lockColor() {
   $(this).toggleClass('locked');
 }
 
-//on mouse enter, dropmenu icon changes
 function onMouseEnter() {
   $('#drop-down-icon').attr('src', './assets/arrow.svg');
 }
 
-//on mouse leave, dropmenu icon changes
 function onMouseLeave() {
   $('#drop-down-icon').attr('src', './assets/arrow-hover.svg');
 }
 
-//function to generate a random hex code
 function generateRandomColor() {
   const characters = `0123456789ABCDEF`;
   let color = `#`;
@@ -358,7 +270,6 @@ function generateRandomColor() {
   return color;
 }
 
-//function to enable and disable save project button
 function enableProjectSaveButton() {
   const userInput = $('#project-name-input').val();
   if(userInput !== '') {
@@ -368,7 +279,6 @@ function enableProjectSaveButton() {
   }
 }
 
-//function to check for duplicate color names
 function checkForDuplicatePaletteName(target, name) {
   let text;
   let array = [];
@@ -380,8 +290,6 @@ function checkForDuplicatePaletteName(target, name) {
   return array.includes(name);
 }
 
-//function that returns an array of 5 hex codes
-//using targeted node text value
 function colorsArray() {
   let text;
   let array = [];

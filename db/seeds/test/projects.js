@@ -1,19 +1,16 @@
-// knex migrate:latest --env test
-// knex seed:run --env test
-
-exports.seed = function(knex, Promise) { //being seeding data for test environment
-  return knex('palettes').del()  // Deletes ALL existing entries for palettes table
-  .then(() => knex('projects').del())  // Deletes ALL existing entries for projects table
+exports.seed = function(knex, Promise) {
+  return knex('palettes').del()
+  .then(() => knex('projects').del())
   .then(() => {
-    return Promise.all([ //return Promise.all begin
-      knex('projects').insert([  //insert four projects
+    return Promise.all([
+      knex('projects').insert([
         { name: 'Project 2', id: 1},
         { name: 'Project 3', id: 2},
         { name: 'Project 4', id: 3},
         { name: 'Project 5', id: 4}
         ])
       .then( project => {
-        return knex('palettes').insert([ // insert four palettes
+        return knex('palettes').insert([
           { name: 'Spring',
             id: 4,
             project_id: 1,
@@ -52,9 +49,9 @@ exports.seed = function(knex, Promise) { //being seeding data for test environme
           }
         ])
       })
-      .then(() => console.log('Seeding test complete!')) //console log if seeding was successful
-      .catch(error => console.log(`Error seeding data: ${error}`)) //console log if seeding was unsuccessful
+      .then(() => console.log('Seeding test complete!'))
+      .catch(error => console.log(`Error seeding data: ${error}`))
     ])
   })
-  .catch(error => console.log(`Error seeding data: ${error}`)); //console log if seeding was unsuccessful
+  .catch(error => console.log(`Error seeding data: ${error}`));
 };
