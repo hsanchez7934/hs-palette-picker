@@ -125,8 +125,17 @@ function newPaletteOnClick() {
 }
 
 function onSaveProjectClick() {
+  let text;
+  let array =[];
   const userInput = $('#project-name-input').val();
   const newProject = new Project(userInput);
+  $('#projects-container').children().each(function(index, element) {
+    text = $(element).find('h4').text();
+    array.push(text);
+  });
+  if(array.includes(userInput)) {
+    return alert('Project name already exists, choose another name!');
+  }
   addProjectToDB(newProject);
   $('#project-name-input').val('');
   enableProjectSaveButton();
