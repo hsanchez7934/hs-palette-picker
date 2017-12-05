@@ -170,6 +170,7 @@ function newPaletteOnClick() {
 //on save project button click
 //project will save to database
 //and prepend to page
+//check for duplicate project names
 function onSaveProjectClick() {
   let text;
   let array =[];
