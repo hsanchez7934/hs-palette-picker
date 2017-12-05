@@ -129,7 +129,6 @@ function postPaletteToProject(id, palette, target) {
     body: JSON.stringify(palette)
   })
   .then(response => response.json())
-  .then(response => console.log(response))
   .then(parsedResponse => appendProjectCard(target, parsedResponse))
   .catch(error => console.log(error));
 }
@@ -382,6 +381,7 @@ function checkForDuplicatePaletteName(target, name) {
 }
 
 //function that returns an array of 5 hex codes
+//using targeted node text value
 function colorsArray() {
   let text;
   let array = [];
