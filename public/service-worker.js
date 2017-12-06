@@ -1,3 +1,4 @@
+/*eslint-disable */
 this.addEventListener('install', event => { //this in this file will always ref service worker cana also use 'self'
   event.waitUntil(
     caches.open('assets-v1').then(cache => {
