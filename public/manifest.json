@@ -1,6 +1,6 @@
 {
-  "short_name": "Palette Picker",
-  "name": "Palette Picker",
+  "short_name": "hs-Palette-Picker",
+  "name": "Palette-Picker",
   "background_color": "#000",
   "theme_color": "#74c7fd",
   "display": "fullscreen",
