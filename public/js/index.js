@@ -2,6 +2,7 @@ $(document).ready(function() {
   newPaletteOnClick();
   fetchProjectsFromDB();
 });
+
 $('#projects-menu').on('mouseenter', onMouseEnter)
                    .on('mouseleave', onMouseLeave)
                    .on('click', projectListOnClick);
@@ -17,6 +18,7 @@ $('#save-palette-button').on('click', onSavePaletteClick);
 $('#projects-container').on('click', '.delete-palette-button', deletePaletteOnClick)
                         .on('click', '.project-delete-button', deleteProjectOnClick)
                         .on('click', '.saved-palette-card', onPaletteCardClick);
+/* eslint-disable no cole*/
 
 function Project(name) {
   this.name = name;
@@ -307,8 +309,8 @@ function checkForDuplicatePaletteName(target, name) {
 
 function colorsArray() {
   let text;
-  let array = [];
-  for(let i = 1; i < 6; i++) {
+  const array = [];
+  for (let i = 1; i < 6; i++) {
     text = $(`#color${i}`).text();
     array.push(text);
   }

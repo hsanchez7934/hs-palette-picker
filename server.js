@@ -5,17 +5,18 @@ const fs = require('fs');
 const path = require('path');
 
 const requireHTTPS = (request, response, next) => {
-  if(request.header('x-forwarded-proto') !== 'https') {
+  if (request.header('x-forwarded-proto') !== 'https') {
     return response.redirect(`https://${request.header('host')}${request.url}`);
   }
+  return next();
 };
 
-if (process.env.NODE_ENV === 'production') { app.use(requireHTTPS) };
+if (process.env.NODE_ENV === 'production') { app.use(requireHTTPS); }
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.locals.title = 'Palette Picker';
 
 const environment = process.env.NODE_ENV || 'development';
@@ -24,18 +25,18 @@ const database = require('knex')(configuration);
 
 app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
-  .then(projects => response.status(200).json(projects))
-  .catch(error => response.status(500).json({ error }));
+    .then(projects => response.status(200).json(projects))
+    .catch(error => response.status(500).json({ error }));
 });
 
 app.post('/api/v1/projects', (request, response) => {
   const project = request.body;
-  if(!project.name) {
-    return response.status(422).json({ error: `Project is missing a name` });
+  if (!project.name) {
+    return response.status(422).json({ error: 'Project is missing a name' });
   }
-  database(`projects`).insert(project, '*')
-  .then(project => response.status(201).json(project[0]))
-  .catch(error => response.status(500).json(error));
+  return database('projects').insert(project, '*')
+    .then(resProject => response.status(201).json(resProject[0]))
+    .catch(error => response.status(500).json(error));
 });
 
 app.post('/api/v1/projects/:id/palettes', (request, response) => {
@@ -56,7 +57,7 @@ app.post('/api/v1/projects/:id/palettes', (request, response) => {
   }
   palette = Object.assign({}, palette, { project_id: projectID });
 
-  database('palettes').insert(palette, '*')
+  return database('palettes').insert(palette, '*')
   .then(palette => response.status(201).json(palette[0]))
   .catch(error => response.status(500).json({ error }));
 });
