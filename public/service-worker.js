@@ -1,10 +1,10 @@
 this.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('assets-v1')
+    caches.open('assets-v2')
       .then(cache => cache.addAll([
         '/index.html',
-        '/assets/arrow-hover.jpg',
-        '/assets/arrow.jpg',
+        '/assets/arrow-hover.svg',
+        '/assets/arrow.svg',
         '/assets/delete-hover.svg',
         '/assets/delete.svg',
         '/assets/padlock.svg',
@@ -30,7 +30,7 @@ this.addEventListener('fetch', event => {
 });
 
 this.addEventListener('activate', event => {
-  let cachesWhiteList = ['assets-v1'];
+  let cachesWhiteList = ['assets-v2'];
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(keys.map(key => {
