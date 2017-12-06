@@ -2,7 +2,7 @@ this.addEventListener('install', event => {
   event.waitUntil(
     caches.open('assets-v1')
       .then(cache => cache.addAll([
-        '/',
+        '/index.html',
         '/assets/arrow-hover.jpg',
         '/assets/arrow.jpg',
         '/assets/delete-hover.svg',
