@@ -2,7 +2,7 @@ this.addEventListener('install', event => { //this in this file will always ref 
   event.waitUntil(
     caches.open('assets-v1').then(cache => {
       return cache.addAll([
-        '/index.html',
+        '/',
         '/assets/arrow-hover.svg',
         '/assets/arrow.svg',
         '/assets/delete-hover.svg',
