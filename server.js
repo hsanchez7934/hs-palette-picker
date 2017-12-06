@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const path = require('path');
 
-if(window.location.protocol != 'https:') {
-  location.href =   location.href.replace("http://", "https://");
-}
+const requireHTTPS = (request, response, next) => {
+  if(request.header('x-forwarded-proto') !== 'https') {
+    return response.redirect(`https://${request.header('host')}${request.url}`);
+  }
+};
+
+if (process.env.NODE_ENV === 'production') { app.use(requireHTTPS) };
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
