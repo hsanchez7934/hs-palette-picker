@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+if(window.location.protocol != 'https:') {
+  location.href =   location.href.replace("http://", "https://");
+}
+
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json())
@@ -11,7 +15,6 @@ app.locals.title = 'Palette Picker';
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
-
 
 app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
@@ -90,4 +93,4 @@ app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
 
-module.exports = app;  
+module.exports = app;
